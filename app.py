@@ -158,7 +158,6 @@ Document:
     )
     summary = summary_response.choices[0].message.content.strip()
 
-    # Generate questions based on summary
     logic_prompt = f"""Based on the following summary, generate 2 or 3 logic or comprehension-based questions.
 
 Summary:
