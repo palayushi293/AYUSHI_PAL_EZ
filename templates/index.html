@@ -39,7 +39,7 @@
             width: 100%;
         }
 
-        button {
+        button, .summary-btn {
             padding: 10px 20px;
             font-size: 16px;
             color: #fff;
@@ -48,9 +48,12 @@
             border-radius: 6px;
             cursor: pointer;
             transition: background-color 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
         }
 
-        button:hover {
+        button:hover, .summary-btn:hover {
             background-color: #45a049;
         }
 
@@ -63,7 +66,7 @@
                 font-size: 20px;
             }
 
-            button {
+            button, .summary-btn {
                 width: 100%;
             }
         }
@@ -77,6 +80,10 @@
             <br>
             <button type="submit">Upload</button>
         </form>
+
+        <a href="{{ url_for('summary_logic') }}" class="summary-btn">
+            📋 Get Summary & Logic Questions
+        </a>
     </div>
 </body>
 </html>

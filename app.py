@@ -139,7 +139,41 @@ def challenge():
             evaluate_answer(session['document_text'], session['questions'][i], user_answers[i]) # type: ignore
             for i in range(3)
         ]
-        return render_template('result.html', evaluations=evaluations)
+        return render_template('res.html', evaluations=evaluations)
+@app.route('/summary_logic')
+def summary_logic():
+    context = session.get('document_text')
+    if not context:
+        return redirect(url_for('index'))
+
+    # Generate summary
+    summary_prompt = f"""Summarize the following document in 5-7 lines:
+
+Document:
+{context}
+"""
+    summary_response = client.chat.completions.create(
+        model="llama3-70b-8192",
+        messages=[{"role": "user", "content": summary_prompt}]
+    )
+    summary = summary_response.choices[0].message.content.strip()
+
+    # Generate questions based on summary
+    logic_prompt = f"""Based on the following summary, generate 2 or 3 logic or comprehension-based questions.
+
+Summary:
+{summary}
+"""
+    logic_response = client.chat.completions.create(
+        model="llama3-70b-8192",
+        messages=[{"role": "user", "content": logic_prompt}]
+    )
+    questions = logic_response.choices[0].message.content.strip().split("\n")
+
+    return render_template("summary_logic.html", summary=summary, questions=questions)
+
+
+
 
 if __name__ == '__main__':
     os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
