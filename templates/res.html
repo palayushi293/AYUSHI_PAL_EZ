@@ -1,0 +1,16 @@
+
+<!-- templates/result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <h2>Your Answers Evaluated:</h2>
+    {% for i in range(3) %}
+        <p><b>Q{{ i+1 }}:</b> {{ evaluations[i] }}</p>
+        <hr>
+    {% endfor %}
+    <a href="/">⬅️ Upload Another Document</a>
+</body>
+</html>

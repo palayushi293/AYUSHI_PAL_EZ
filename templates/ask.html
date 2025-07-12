@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ask Anything</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(to right, #e3f2fd, #ffffff);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .ask-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h2 {
+            color: #1976d2;
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        input[type="text"] {
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            margin-bottom: 15px;
+        }
+
+        button {
+            padding: 12px;
+            font-size: 16px;
+            background-color: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #125ea3;
+        }
+
+        hr {
+            margin-top: 30px;
+        }
+
+        h3 {
+            color: #333;
+            margin-top: 10px;
+        }
+
+        p {
+            font-size: 16px;
+            color: #444;
+        }
+
+        @media (max-width: 500px) {
+            .ask-container {
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="ask-container">
+        <h2>🤔 Ask a Question About the Document</h2>
+        <form method="POST">
+            <input type="text" name="question" placeholder="Enter your question..." required>
+            <button type="submit">Ask</button>
+        </form>
+
+        {% if answer %}
+            <hr>
+            <h3>🧠 Answer:</h3>
+            <p>{{ answer }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
