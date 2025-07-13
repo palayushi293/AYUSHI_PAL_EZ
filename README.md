@@ -1,4 +1,4 @@
-FIRST TO RUN IT MAKE A enviro.env file for GROQ_API=
+FIRST TO RUN IT MAKE A enviro.env file for GROQ_API=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
 
 APPROACH
 
